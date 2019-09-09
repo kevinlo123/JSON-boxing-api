@@ -1,0 +1,2 @@
+class Boxer < ApplicationRecord
+end

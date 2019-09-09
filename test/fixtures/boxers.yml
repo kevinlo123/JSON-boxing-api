@@ -1,0 +1,23 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  height: MyString
+  weight: MyString
+  nationality: MyString
+  stance: MyString
+  bouts: 1
+  wins: 1
+  losses: 1
+  division: MyString
+
+two:
+  name: MyString
+  height: MyString
+  weight: MyString
+  nationality: MyString
+  stance: MyString
+  bouts: 1
+  wins: 1
+  losses: 1
+  division: MyString
