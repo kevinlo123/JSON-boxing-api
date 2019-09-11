@@ -6,7 +6,11 @@ ruby '2.5.1'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'
 
+# Postgresql database gem
 gem 'pg'
+
+# redis-rails data caching for api 
+gem 'redis-rails'
 
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
