@@ -5,38 +5,29 @@ class BoxersController < ApplicationController
    def index
       boxers = Boxer.all
       json = Rails.cache.fetch(Boxer.cache_key(boxers)) do
-         { status: 'SUCCESS', message: 'Loaded all boxers', data: boxers, status: :ok }
+         { status: :ok , message: 'Loaded all boxers', data: boxers }
       end
       render json: json
    end
 
    def create
       @boxer = Boxer.new(boxers_params)
-      json = Rails.cache.fetch('boxers') do
-         { status: 'SUCCESS', message: 'Created Boxer', data: @boxer, status: :created }
-      end
       if @boxer.save
-         render json: json	
+         render json: { status: 'SUCCESS', message: 'Created Boxer', data: @boxer, status: :created }         
       else
          render json: {status: 'ERROR', message: 'Couldnt respond to request', data: @boxer.error, status: :unprocessable_entity }
       end
    end
 
    def show
-      json = Rails.cache.fetch('boxers') do
-         { status: 'SUCCESS', message: 'Loaded Boxer', data: @boxer, status: :ok }
-      end
       if @boxer
-         render json: json	
+         render json: { status: :ok , message: 'Loaded Boxer', data: @boxer }         
       end
    end
 
    def update
-      json = Rails.cache.fetch('boxers') do
-         { status: 'SUCCESS', message: 'Updated Boxer', data: @boxer }	
-      end
       if @boxer.update(boxers_params)
-         render json: json
+         render json: { status: 'SUCCESS', message: 'Updated Boxer', data: @boxer }	         
       else
          render json: @boxer.errors, status: :unprocessable_entity
       end
@@ -44,11 +35,8 @@ class BoxersController < ApplicationController
 
    def destroy
       boxers = Boxer.all	
-      json = Rails.cache.fetch('boxers') do
-         {status: 'DESTROYED', message: 'Erased Boxer', data: @boxer, status: :deleted }        
-      end	
       if @boxer.destroy
-         render json: json
+         render json: { status: :deleted, message: 'Erased Boxer', data: @boxer }                 
       else
          render json: {status: 'ERROR', message: 'Couldnt respond to request', data: boxers.error, status: :unprocessable_entity }		
       end
