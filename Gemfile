@@ -12,6 +12,9 @@ gem 'pg'
 # redis-rails data caching for api 
 gem 'redis-rails'
 
+#serializer https://github.com/Netflix/fast_jsonapi
+gem 'fast_jsonapi'
+
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

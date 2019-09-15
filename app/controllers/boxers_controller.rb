@@ -1,55 +1,45 @@
-class BoxersController < ApplicationController
-   rescue_from ActiveRecord::RecordNotFound, with: :show_not_found_errors		
+class BoxersController < ApplicationController	
    before_action :set_boxer, only: [:show, :update, :destroy]
    
    def index
       boxers = Boxer.all
-      json = Rails.cache.fetch(Boxer.cache_key(boxers)) do
-         { status: :ok , message: 'Loaded all boxers', data: boxers }
-      end
-      render json: json
+      # json = Rails.cache.fetch(Boxer.cache_key(boxers)) do
+      #    BoxerSerializer.new(boxers).serialized_json
+      # end
+      render json: BoxerSerializer.new(boxers).serialized_json   
    end
 
    def create
-      @boxer = Boxer.new(boxers_params)
-      if @boxer.save
-         render json: { status: 'SUCCESS', message: 'Created Boxer', data: @boxer, status: :created }         
-      else
-         render json: {status: 'ERROR', message: 'Couldnt respond to request', data: @boxer.error, status: :unprocessable_entity }
-      end
+      @boxer = Boxer.create!(boxers_params)
+      json = BoxerSerializer.new(@boxer).serialized_json
+      if @boxer
+         render json: json 
+      end     
    end
 
    def show
+      json = BoxerSerializer.new(@boxer).serialized_json
       if @boxer
-         render json: { status: :ok , message: 'Loaded Boxer', data: @boxer }         
+         render json: json         
       end
    end
 
    def update
       if @boxer.update(boxers_params)
-         render json: { status: 'SUCCESS', message: 'Updated Boxer', data: @boxer }	         
-      else
-         render json: @boxer.errors, status: :unprocessable_entity
+         render json: BoxerSerializer.new(@boxer).serialized_json
       end
    end
 
    def destroy
-      boxers = Boxer.all	
       if @boxer.destroy
-         render json: { status: :deleted, message: 'Erased Boxer', data: @boxer }                 
-      else
-         render json: {status: 'ERROR', message: 'Couldnt respond to request', data: boxers.error, status: :unprocessable_entity }		
+         render json: BoxerSerializer.new(@boxer).serialized_json                	
       end
    end
    
    private 
 
-      def show_not_found_errors(exception)
-         render json: { status: 'ERROR', message: exception.message, status: :unprocessable_entity }
-      end
-
       def boxers_params
-         params.permit(:id,:name, :height, :weight, :nationality, :stance, :bouts, :wins, :losses, :division)			
+         params.permit(:id, :name, :height, :weight, :nationality, :stance, :bouts, :wins, :losses, :division)			
       end
 
       def set_boxer
