@@ -20,7 +20,7 @@ SET default_tablespace = '';
 SET default_with_oids = false;
 
 --
--- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: kevinlopez
+-- Name: ar_internal_metadata; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.ar_internal_metadata (
@@ -31,10 +31,8 @@ CREATE TABLE public.ar_internal_metadata (
 );
 
 
-ALTER TABLE public.ar_internal_metadata OWNER TO kevinlopez;
-
 --
--- Name: heavyweights; Type: TABLE; Schema: public; Owner: kevinlopez
+-- Name: heavyweights; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.heavyweights (
@@ -51,10 +49,8 @@ CREATE TABLE public.heavyweights (
 );
 
 
-ALTER TABLE public.heavyweights OWNER TO kevinlopez;
-
 --
--- Name: heavyweights_id_seq; Type: SEQUENCE; Schema: public; Owner: kevinlopez
+-- Name: heavyweights_id_seq; Type: SEQUENCE; Schema: public; Owner: -
 --
 
 CREATE SEQUENCE public.heavyweights_id_seq
@@ -66,17 +62,15 @@ CREATE SEQUENCE public.heavyweights_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.heavyweights_id_seq OWNER TO kevinlopez;
-
 --
--- Name: heavyweights_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: kevinlopez
+-- Name: heavyweights_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
 --
 
 ALTER SEQUENCE public.heavyweights_id_seq OWNED BY public.heavyweights.id;
 
 
 --
--- Name: schema_migrations; Type: TABLE; Schema: public; Owner: kevinlopez
+-- Name: schema_migrations; Type: TABLE; Schema: public; Owner: -
 --
 
 CREATE TABLE public.schema_migrations (
@@ -84,17 +78,15 @@ CREATE TABLE public.schema_migrations (
 );
 
 
-ALTER TABLE public.schema_migrations OWNER TO kevinlopez;
-
 --
--- Name: heavyweights id; Type: DEFAULT; Schema: public; Owner: kevinlopez
+-- Name: heavyweights id; Type: DEFAULT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.heavyweights ALTER COLUMN id SET DEFAULT nextval('public.heavyweights_id_seq'::regclass);
 
 
 --
--- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: kevinlopez
+-- Data for Name: ar_internal_metadata; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.ar_internal_metadata (key, value, created_at, updated_at) FROM stdin;
@@ -103,7 +95,7 @@ environment	development	2019-09-27 17:27:16.251238	2019-09-27 17:27:16.251238
 
 
 --
--- Data for Name: heavyweights; Type: TABLE DATA; Schema: public; Owner: kevinlopez
+-- Data for Name: heavyweights; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.heavyweights (id, rank, name, link, heavyweights_boxer_id, points, age, wins, losses, draws) FROM stdin;
@@ -1429,7 +1421,7 @@ COPY public.heavyweights (id, rank, name, link, heavyweights_boxer_id, points, a
 
 
 --
--- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: kevinlopez
+-- Data for Name: schema_migrations; Type: TABLE DATA; Schema: public; Owner: -
 --
 
 COPY public.schema_migrations (version) FROM stdin;
@@ -1438,14 +1430,14 @@ COPY public.schema_migrations (version) FROM stdin;
 
 
 --
--- Name: heavyweights_id_seq; Type: SEQUENCE SET; Schema: public; Owner: kevinlopez
+-- Name: heavyweights_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
 --
 
 SELECT pg_catalog.setval('public.heavyweights_id_seq', 1318, true);
 
 
 --
--- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: kevinlopez
+-- Name: ar_internal_metadata ar_internal_metadata_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.ar_internal_metadata
@@ -1453,7 +1445,7 @@ ALTER TABLE ONLY public.ar_internal_metadata
 
 
 --
--- Name: heavyweights heavyweights_pkey; Type: CONSTRAINT; Schema: public; Owner: kevinlopez
+-- Name: heavyweights heavyweights_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.heavyweights
@@ -1461,7 +1453,7 @@ ALTER TABLE ONLY public.heavyweights
 
 
 --
--- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: kevinlopez
+-- Name: schema_migrations schema_migrations_pkey; Type: CONSTRAINT; Schema: public; Owner: -
 --
 
 ALTER TABLE ONLY public.schema_migrations
