@@ -15,18 +15,16 @@ ActiveRecord::Schema.define(version: 2019_09_09_012702) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "boxers", force: :cascade do |t|
-    t.string "name"
-    t.string "height"
-    t.string "weight"
-    t.string "nationality"
-    t.string "stance"
-    t.integer "bouts"
-    t.integer "wins"
-    t.integer "losses"
-    t.string "division"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table "heavyweights", id: :serial, force: :cascade do |t|
+    t.text "rank"
+    t.text "name"
+    t.text "link"
+    t.integer "heavyweights_boxer_id"
+    t.integer "points"
+    t.integer "age"
+    t.text "wins"
+    t.text "losses"
+    t.text "draws"
   end
 
 end

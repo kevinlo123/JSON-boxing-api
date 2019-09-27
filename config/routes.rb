@@ -3,4 +3,7 @@ Rails.application.routes.draw do
    scope '/api' do   
       resources :boxers
    end
+   scope '/api' do   
+      resources :heavyweights
+   end
 end

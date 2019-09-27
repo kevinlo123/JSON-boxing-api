@@ -6,7 +6,7 @@ default:
 development:
   adapter: postgresql
   encoding: unicode
-  database: boxing_fighters
+  database: boxing
   pool: 5
   username: kevinlopez
   password: 
@@ -19,7 +19,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: boxing_fighters
+  database: boxing
   pool: 5
   username: kevinlopez
   password: 
